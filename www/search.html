@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/materialize.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css" />
+	<title>search</title>
+	<script src="js/jquery-1.11.3.js"></script>
+	<script type="text/javascript" src="cordova.js"></script>
+	<script src="js/search.js"></script>
+	<script src="js/Baby.js"></script>
+</head>
+<body>
+	<div class="content">
+
+		<div class="nav">
+			<div class="left-align back-btn">
+				<a href="index.html" class="circle z-depth-2"><<<</a>
+			</div>
+			<div class="right-align edit-btn">
+				<a href="add_bby.html" class="circle z-depth-2">Add</a>
+			</div>
+		</div>
+				<div class="divider"></div>
+		<div class="bby-list">
+			<ul class="collection no-border" id="bbyList">
+				
+			</ul>
+		</div>
+	</div>
+	<script>
+	 // 		$(document).ready(function() {
+		// 	function renderBbys() {
+		// 		var bbys = JSON.parse(window.localStorage.getItem("collection"));
+		// 		var list = document.getElementById("bbyList");
+		// 		var output = "";
+		// 		for (var i = 0; i < bbys.length; i++) {
+		// 			output += bbyToListItem(bbys[i], i);
+		// 		}
+		// 		list.innerHTML = output;
+		// 	}
+		// 	renderBbys();
+		// 	function viewBbyDetails(event, element) {
+		// 		event.preventDefault();
+		// 		console.log(element);
+		// 		var lnk = element.getAttribute('href');
+		// 		var id = lnk.substring(lnk.indexOf('id=')+3, lnk.length);
+		// 		window.localStorage.setItem("currBby", id);
+		// 		location.replace(lnk);
+				
+		// 	}
+		// 	$(".bby-details").click(function(e) {
+		// 		viewBbyDetails(e, this);
+		// 	})
+		// });
+
+	</script>
+	
+</body>
+</html>

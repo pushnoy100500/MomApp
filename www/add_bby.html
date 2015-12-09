@@ -1,0 +1,186 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--<script type="text/javascript" charset="utf-8" src="js/phonegap.js"></script>-->
+        <title>New Baby</title>
+        <!--<link href="style.css" rel="stylesheet" />-->
+        <!--linking stylesheet-->
+        <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+        <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <link href="css/materialize.css" rel="stylesheet" />
+        <link rel="stylesheet" href="css/index.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <script type="text/javascript" src="cordova.js"></script>
+     
+    <script src="js/baby.js"></script>
+  <script src="js/addBby.js"></script> 
+    </head>
+    
+    <body class="createBby">
+        <div id="createBaby">
+            <div data-role="content">
+              <div class="nav">
+                <div class="left-align back-btn">
+  						    <a href="index.html" class="circle z-depth-2"><<<</a>
+  				      </div>
+               
+              </div>
+              <div class="divider dvd"></div><br />
+                <form class="form" id="form" method="post" autocomplete="off" action="#">
+
+                    <!--input boxes for each category-->
+                    
+                    <div class="row">
+                       <label class="active" for="babyName">Name</label>
+
+                          <input value="" type="text" class="input-field col s12 bbyName" id="name" name="babyName" placeholder="Enter baby's name">
+
+                    </div>
+                    
+                   <div id="gender">
+                     <label>Gender </label><br />               
+                        
+                          <input name="gender" type="radio" id="test1" class="with-gap waves-effect waves-light blue lighten-2" value="boy" />
+                          <label class="active" for="test1" >Male</label>
+
+                          <input name="gender" type="radio" id="test2" class="with-gap waves-effect waves-light blue lighten-2" value="girl" />
+                          <label class="active" for="test2">Female</label>
+
+                    </div> 
+                    <br />
+                           
+                    <label>Date of Birth </label>    
+                    <div class="input-field col s12">      
+                        <select name="select-choice-month" id="select-choice-month" class="blue lighten-2">
+                            <option value="" >month</option>
+                        </select>
+                    </div>
+                    <div class="input-field col s12">
+                        <select name="select-choice-day" id="select-choice-day" class="blue lighten-2" >
+                            <option value="">day</option>
+                        </select>
+                    </div>
+                    <div class="input-field col s12">
+                        <select name="select-choice-year" id="select-choice-year" class="blue lighten-2" >
+                            <option value="">year</option>
+                        </select>
+                    </div>
+                    <br />
+                    
+                    <div class="input-field col s12">
+                        <select name="select-choice-hight" id="select-choice-height" class="blue lighten-2" required>
+                            <option value="">Height(foot)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="input-field col s12">
+                        <select name="select-choice-weight" id="select-choice-weight" class="blue lighten-2" required>
+                            <option value="0">Weight(lb)</option>
+                        </select>
+                    </div>
+
+                    
+                  <div class="row">
+                    <form class="col s12">
+                      <div class="row">
+                          <textarea id="textarea1" class="materialize-textarea" class="input-field col s12" placeholder="Enter description" ></textarea>
+                      </div>
+                    </form>
+                  </div>
+        
+                  <div id="message">
+                      
+                  </div>
+                    
+                    <button onclick="capturePhoto();">Capture Photo</button> <br>
+                     <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br>
+                 <!--   <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br>
+                    <button onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button><br> -->
+                    <br><br>
+                <!--    <button onclick="capturePhotoWithFile();">Capture Photo With Image File URI</button> <br>-->
+                    <!--footer-->
+                    <div id="footer" data-role="footer" data-position="fixed">
+                       <button class="btn waves-effect waves-light blue lighten-2" type="submit" name="action" id="add">Submit
+                            <i class="material-icons right">send</i>
+                       </button>
+                    </div>
+                </form>
+        </div>
+        <script>
+            // $(document).ready(function(){               
+                 
+            //     function saveBaby(baby) {
+            //        var bbys = JSON.parse(window.localStorage.getItem("collection"));
+            //        bbys.push(baby);
+            //        window.localStorage.setItem("collection", JSON.stringify(bbys));
+            //     }                             
+            //     //populating the select elements 
+            //     function buildSelect(start, end, step, element, isDecimal) {
+            //        for(var a = start; a <= end; a+=step) {
+            //           var option = document.createElement('option');
+            //           option.value = a;
+            //           option.innerHTML = a; 
+            //           if(isDecimal) {
+            //             option.value = a.toFixed(1);
+            //             option.innerHTML = a.toFixed(1); 
+            //           }                  
+            //           element.appendChild(option);
+            //         }
+            //     }
+            //     //Verify if user input is valid
+            //     function isValidInput() {
+            //        if(name.value == "" || !$("input[type='radio']").is(':checked') || month.value == "" || day.value == "" || year.value == "" || height.value == "" || weight.value == "") {
+            //               return false;                           
+            //             } else {
+            //                return true;
+            //             }
+            //     }
+            //     var name = document.getElementById("name");
+            //     var gender = document.getElementById("gender");
+            //     var year = document.getElementById("select-choice-year");
+            //     var month = document.getElementById("select-choice-month");
+            //     var day = document.getElementById("select-choice-day");
+            //     var height = document.getElementById("select-choice-height");
+            //     var weight = document.getElementById("select-choice-weight");
+            //     var description = document.getElementById("textarea1");
+            //      //populate years selection dropdown
+            //     buildSelect(2012, new Date().getFullYear(), 1, year, false);
+            //      //populate months selection dropdown
+            //     buildSelect(1, 12, 1, month, false);
+            //      // populate number of days
+            //     buildSelect(1, 31, 1, day), false;
+            //     //populate height in foot 
+            //     buildSelect(1, 4, 0.1, height, true);
+            //     //populate weight in pounds
+            //     buildSelect(1, 50, 1, weight, false);
+                 
+            //     //when we click on add button
+            //     $('#add').click(function(){
+            //         if(!isValidInput()) {
+            //                document.getElementById("message").innerHTML = "Please fill in all fields";
+            //             }else {
+            //               //Baby(name, gender, birthTimeStamp, growthRecord)
+            //               var birthTimeStamp = new Date( year.value, month.value, day.value).getTime();              
+            //               var record = new GrowthRecord(height.value, weight.value);
+            //               var baby = new Baby(name.value, $("input[name='gender']:checked").val(), birthTimeStamp, description.value, record);
+                         
+            //                 console.log(baby);
+            //                 saveBaby(baby);
+            //                 //console.log(baby.toListItem(1));
+            //             }
+
+            //     });
+            // });
+            
+           
+                
+        </script>
+
+    </body>
+</html>

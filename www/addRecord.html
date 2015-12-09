@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--<script type="text/javascript" charset="utf-8" src="js/phonegap.js"></script>-->
+        <title>New Baby</title>
+        <!--<link href="style.css" rel="stylesheet" />-->
+        <!--linking stylesheet-->
+        <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+        <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+        <link href="css/materialize.css" rel="stylesheet" />
+        <link rel="stylesheet" href="css/index.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <script type="text/javascript" src="cordova.js"></script>
+     
+    <script src="js/baby.js"></script>
+ <script src="js/addRecord.js"></script> 
+    </head>
+    
+    <body class="adr">
+         <div class="nav">
+                <div class="left-align back-btn">
+                            <a href="bbyDetails.html" class="circle z-depth-2"><<<</a>
+                      </div>
+            </div>
+            <div class="divider"></div>
+            <div class="addRecord">
+             <form class="form" id="form" method="post" autocomplete="off" action="#">
+                 <div class="input-field col s12">
+                        <select name="select-choice-hight" id="select-choice-height" class="blue lighten-2" required>
+                            <option value="">Height(foot)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="input-field col s12">
+                        <select name="select-choice-weight" id="select-choice-weight" class="blue lighten-2" required>
+                            <option value="0">Weight(lb)</option>
+                        </select>
+                    </div>      
+                    <br>
+                       <input class="btn waves-effect waves-light blue lighten-2" type="submit" name="action" id="add">                       
+                        
+            </form>
+            </div>
+            <script>
+
+    // function buildSelect(start, end, step, element, isDecimal) {
+    //                for(var a = start; a <= end; a+=step) {
+    //                   var option = document.createElement('option');
+    //                   option.value = a;
+    //                   option.innerHTML = a; 
+    //                   if(isDecimal) {
+    //                     option.value = a.toFixed(1);
+    //                     option.innerHTML = a.toFixed(1); 
+    //                   }                  
+    //                   element.appendChild(option);
+    //                 }
+    //     }
+        
+    //     $(document).ready(function() {
+    //                 var height = document.getElementById("select-choice-height");
+    //                 var weight = document.getElementById("select-choice-weight");
+    //                 buildSelect(1, 4, 0.1, height, true);
+    //                 buildSelect(1, 50, 1, weight, false);
+
+    //         $('#add').click(function(e){
+    //             e.preventDefault();
+    //                 var record = new GrowthRecord(height.value, weight.value);
+    //                 var bbyId = localStorage.currBby;
+    //                 var collection = JSON.parse(localStorage.collection);
+    //                 var currBby = collection[bbyId];
+    //                 currBby.growthRecords.push(record);
+    //                 collection[bbyId] = currBby;
+    //                 localStorage.collection = JSON.stringify(collection);
+
+    //         });                
+    //     });
+            </script>
+    </body>
+</html>

@@ -1,0 +1,168 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+body {
+  /*  -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold 
+    -webkit-text-size-adjust: none;              prevent webkit from resizing text to fit 
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' 
+    width:100%;
+    font-size: 100%;*/
+    background-color: #ffcdd2;
+
+
+}
+
+
+
+/* Landscape layout (with min-width) */
+@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
+    .app {
+        background-position:left center;
+        padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
+        margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
+                                      /* offset horizontal: half of image width and text area width */
+    }
+}
+
+
+.content {
+    height: 350px;   
+    padding-top: 20px;
+}
+.profile {
+    background-color: #64b5f6;
+    height: 100%;
+    padding-top: 20px;
+
+}
+.profile img {
+    padding: 10px;
+    width: 30%;
+    height: 30%;
+    margin: 10px auto;
+    padding-top: 5px;
+}
+.nav {
+    overflow: auto;
+    background-color: #64b5f6;
+
+}
+.back-btn {
+   display: inline-block;
+   float: left;
+   margin-left: 15px;
+}
+.edit-btn {
+    display: inline-block;
+   float: right; 
+   margin-right: 15px;
+}
+.back-btn a, .edit-btn a {
+    display: inline-block;
+    margin-top: 5px;
+    color: #64b5f6;
+    padding: 5px;
+    background-color: #ffcdd2;
+   margin-bottom: 10px;
+}
+.row {
+ 
+}
+#graph, #graph2 {
+    
+    margin: auto;
+    height: 400px;
+    background-color: #64b5f6;
+    padding: 5px;
+    border-radius: 5px;
+}
+/* add new baby form styles*/
+.createBby {
+    color: white;
+}
+#createBaby{
+    margin: 15px;
+}
+ #message {
+    color: red;
+}
+ .file-path-wrapper {
+   color: #64b5f6;
+ }
+
+ .bbyName[placeholder] {
+    color:  #000;
+ 
+ }
+ ::-webkit-input-placeholder {
+    color:    #999;
+}
+/* search page styles */
+.no-border {
+    border: none;
+}
+.bby-list {
+    padding: 10px;
+}
+.bby-list ul .search-item {
+    margin-top: 10px;
+    background-color: #64b5f6;
+    color: rgb(240,240,240);
+}
+.bby-list ul .search-item a {
+    display: block;
+    background-color: #ffcdd2;
+    width: 50%;
+    text-align: center;
+    margin-top: 5px;
+    padding: 5px;
+    border-radius: 5px; 
+}
+
+.adr {
+    padding-top: 20px;
+}
+.addRecord {
+    padding: 10px;
+}
+.addRecord nav {
+    margin-top: 10px;
+}
+.marged {
+    margin-top: 20px;
+    background-color: #64b5f6;
+    width: 15px;
+}
+.marged-more {
+    margin-top: 55px;
+        background-color: #64b5f6;
+    width: 15px;
+}
+.mrg {
+    margin-top: 50px;
+}
+.start {
+    text-decoration: none;
+    padding: 5px;
+    color: #ffcdd2;
+    background-color: #64b5f6;
+}

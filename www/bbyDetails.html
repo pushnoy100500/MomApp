@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Baby details</title>
+	 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	 <meta name="viewport" content="width=device-width, initial-scale=1">
+	<script type="text/javascript" src="cordova.js"></script>
+   <!--  <script src="js/index.js"></script> -->
+     <script src="js/baby.js"></script>
+  <script src="js/bbyDetails.js"></script>
+     <link rel="stylesheet" href="css/materialize.css">
+	 <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+	<div class="content">
+		<div class="row">
+			<div class="col s12 m12 profile center-align">
+				<div class="nav">
+					<div class="left-align back-btn">
+						<a href="search.html" class="circle z-depth-2"><<<</a>
+					</div>
+					<div class="right-align edit-btn">
+						<a href="addRecord.html" class="circle z-depth-2">add Record</a>
+					</div>
+				</div>
+				<div class="divider"></div>
+				<img class="responsive-img circle z-depth-2" id="photo" src="dummy.png" alt="">
+				<h5 class="center-align" id="name"></h5>
+				<div class="descr">
+				
+					<!-- up to 120 characters -->
+					<p class="" id="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati dicta, debitis quaerat nesciunt. dolor yo nhim blah.</p>
+				</div>
+				
+				
+			</div>
+			
+		</div>
+		<div class="row">
+			<div class="col s12 center-align">
+				<h5 id="gender">This is a nice kid</h5>
+			</div>
+			<div class="col s4">
+				<p class="height center-align">					
+					<img src="css/11-02.png" height="50" width="50" alt="">
+					<p class="center-align" id="height">3 feet tall</p>
+				</p>
+			</div>
+			<div class="col s4">
+				<p class="weight center-align">					
+					<img src="css/11-03.png" height="50" width="50" alt="">
+					<p class="center-align" id="weight">10 lbs heavy</p>
+				</p>
+			</div>
+			<div class="col s4">
+				<p class="age center-align">
+					<img src="css/11-04.png" height="50" width="50" alt="">
+					<p class="center-align" id="age">2 years old</p>
+				</p>
+			</div>
+		</div>
+	<div class="row">
+		<div class="col s1">
+		
+			<div class="divider marged-more"></div>
+
+			1
+			<div class="divider marged"></div>
+			2
+			<div class="divider marged"></div>
+			3
+			<div class="divider marged"></div>
+			4
+			<div class="divider marged"></div>
+			5
+			<div class="divider marged"></div>
+			6
+			<div class="divider marged"></div>
+			7
+			<div class="divider marged"></div>
+			8
+			
+		</div>
+		<div class="col s10">
+			<div id="graph">
+				
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col s1">
+		
+			<div class="divider marged-more"></div>
+
+			1
+			<div class="divider marged"></div>
+			2
+			<div class="divider marged"></div>
+			3
+			<div class="divider marged"></div>
+			4
+			<div class="divider marged"></div>
+			5
+			<div class="divider marged"></div>
+			6
+			<div class="divider marged"></div>
+			7
+			<div class="divider marged"></div>
+			8
+			
+		</div>
+		<div class="col s10">
+			<div id="graph2">
+				
+			</div>
+		</div>
+	</div>
+
+
+</div>
+	
+
+
+    <script type="text/javascript">
+    			var bbyId = localStorage.getItem("currBby");
+            	var bby = JSON.parse(localStorage.getItem("collection"))[bbyId];
+       //      $(document).ready(function() {
+            	
+       //      	//console.log(bby);
+
+       //      	function renderBbyDetails(bbyObj) {
+       //      		var name = document.getElementById("name");
+       //      		var gender = document.getElementById("gender");
+       //      		var description = document.getElementById("description");
+       //      		var height = document.getElementById("height");
+       //      		var weight = document.getElementById("weight");
+       //      		var age = document.getElementById("age");
+
+       //      		name.innerHTML = bbyObj.name;
+       //      		description.innerHTML = bbyObj.description;
+       //      		gender.innerHTML = "This is a " + bbyObj.gender;
+       //      		height.innerHTML = bbyObj.growthRecords[bbyObj.growthRecords.length-1].height + " feet tall";
+       //      		weight.innerHTML = bbyObj.growthRecords[bbyObj.growthRecords.length-1].weight + " lbs heavy";
+       //      		age.innerHTML = new Date(bbyObj.birthTimeStamp).getFullYear();
+
+       //      	}
+       //      	renderBbyDetails(bby);
+
+       //      });
+    </script>
+    <script src="js/d3.js"></script>
+    <script>
+
+    	var growthTemp = bby.growthRecords;
+    	var dataArray = [];
+    	growthTemp.forEach(function(el) {
+    		dataArray.push(Math.floor(el.height*el.weight));
+    	})
+    	console.log(JSON.stringify(dataArray));
+
+    	var width = 260;
+    	var height = 380;
+
+    	d3.select("#graph")
+    			.append("h5")
+    			.text("Height dynamics")
+    			.style("text-align", "center")
+    			.append("hr");
+
+    	var canvas = d3.select("#graph")
+    				.append("svg")
+    				.attr("width", width)
+    				.attr("height", height);
+
+    	var heightScale = d3.scale.linear()
+    							.domain([0, 200])
+    							.range([0, height]);
+
+    	var bars = canvas.selectAll("rect")
+    						.data(growthTemp)
+    						.enter()
+    						.append('rect')
+    						.attr("height", function(d) {return heightScale(d.height*50); })
+    						.attr("width", 20)
+    						.attr("x", function(d, i) { return i * 22; })
+    						.attr("fill", "#ef6c00");
+
+    	d3.select("#graph2")
+    			.append("h5")
+    			.text("Weight dynamics")
+    			.style("text-align", "center").
+    			append("hr");
+
+    	var canvas2 = d3.select("#graph2")
+    					.append("svg")
+    					.attr("width", width)
+    					.attr("height", height);
+
+    	var bars2 = canvas2.selectAll("rect")
+    							.data(growthTemp)
+    							.enter()
+    							.append('rect')
+    							.attr("height", function(d) {return heightScale(d.weight*2); })
+	    						.attr("width", 20)
+	    						.attr("x", function(d, i) { return i * 22; })
+	    						.attr("fill", "#ef6c00");
+    </script>
+</body>
+</html>
